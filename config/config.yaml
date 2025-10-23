@@ -1,0 +1,4 @@
+app:
+  name: go-rest-template
+  port: 8080
+  env: development
