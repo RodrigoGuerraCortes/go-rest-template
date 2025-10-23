@@ -4,10 +4,14 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/RodrigoGuerraCortes/go-rest-template/internal/db"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+	client := db.NewPostgresClient()
+	defer client.Close()
+
 	router := gin.Default()
 
 	router.GET("/api/v1/health", func(c *gin.Context) {

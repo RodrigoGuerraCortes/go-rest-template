@@ -122,7 +122,7 @@ Full Stack Developer | Go, Laravel & Clean Architecture | 🇨🇱
 
 ---
 
-# 🇬🇷 Go REST Template — Clean Architecture + Docker + PostgreSQL
+# 🇬🇧 Go REST Template — Clean Architecture + Docker + PostgreSQL
 
 ## 📘 Overview
 
