@@ -34,10 +34,23 @@ cd go-rest-template
 docker compose up --build -d
 ```
 
-Esto levantará dos contenedores:
+Esto levantará tres contenedores:
 
-* `go-rest-template` (API)
-* `postgres-db` (Base de datos PostgreSQL)
+| Servicio                          | Rol                                                                           |
+| --------------------------------- | ----------------------------------------------------------------------------- |
+| 🐘 `postgres-db-go-rest-template` | Base de datos PostgreSQL                                                      |
+| 🧩 `go-rest-template-migrations`  | Aplica automáticamente las migraciones generadas por **Ent + Atlas**          |
+| 🚀 `go-rest-template`             | Servidor REST en Go (espera a que las migraciones finalicen antes de iniciar) |
+
+
+#### 🔁 Flujo automático:
+
+1. Se crea la base go_rest si no existe.
+
+2. Atlas ejecuta las migraciones desde ent/migrate/migrations/.
+
+3. La API inicia y se conecta correctamente a la base de datos.
+
 
 ### 🔍 3. Verificar el estado
 
@@ -147,6 +160,26 @@ It follows **Clean Architecture** principles and includes a **Dockerized setup**
 ```bash
 docker compose up --build -d
 ```
+
+### 🧱 Automatic Migrations with Atlas
+
+When you run docker compose up -d, three containers are launched:
+
+| Service                           | Role                                               |
+| --------------------------------- | -------------------------------------------------- |
+| 🐘 `postgres-db-go-rest-template` | PostgreSQL database                                |
+| 🧩 `go-rest-template-migrations`  | Automatically applies **Ent + Atlas** migrations   |
+| 🚀 `go-rest-template`             | Go REST API (starts only after migrations succeed) |
+
+
+#### 🔁 Automatic flow:
+
+1. Creates the database go_rest if it doesn’t exist.
+
+2. The migrations service runs all pending migrations from /ent/migrate/migrations.
+
+3. Once done, the api container starts and connects successfully.
+
 
 Then visit 👉 [http://localhost:8080/api/v1/health](http://localhost:8080/api/v1/health)
 

@@ -63,3 +63,17 @@ atlas-status:
 # Ejecutar todo el proceso completo
 migrate-all: ent-generate atlas-diff atlas-apply
 	@echo "✅ Migraciones generadas y aplicadas con éxito."
+
+
+
+# Levantar todo con entorno .env.compose
+#docker compose --env-file .env.compose up -d
+#
+## Verificar el estado de los servicios
+#docker compose ps -a
+#
+## Revisar los logs de migraciones
+#docker logs go-rest-template-migrations-1
+#
+## Verificar que la API está arriba
+#curl http://localhost:8080/api/v1/health

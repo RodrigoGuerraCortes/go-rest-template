@@ -10,7 +10,7 @@ import (
 )
 
 func NewPostgresClient() *ent.Client {
-	dsn := "host=db port=54390 user=postgres password=postgres dbname=go_rest sslmode=disable"
+	dsn := "host=db port=5432 user=postgres password=postgres dbname=go_rest sslmode=disable"
 	client, err := ent.Open("postgres", dsn)
 	if err != nil {
 		log.Fatalf("failed opening connection to postgres: %v", err)
